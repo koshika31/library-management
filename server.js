@@ -7,7 +7,8 @@ const app = express();
 const port = 3000;
 
 app.use(bodyParser.json());
-app.use(express.static(__dirname));
+// Serve static files from the root directory
+app.use(express.static(path.join(__dirname)));
 
 const booksFilePath = path.join(__dirname, 'file', 'books.json');
 const issuedBooksFilePath = path.join(__dirname, 'file', 'issued_books.json');
@@ -58,6 +59,11 @@ app.post('/api/issued-books', (req, res) => {
         }
         res.send('Issued books saved successfully.');
     });
+});
+
+// Handle serving the main HTML file on the root route
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(port, () => {

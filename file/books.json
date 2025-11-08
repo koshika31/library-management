@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "title": "chemistry",
+    "author": "dit",
+    "category": "Science",
+    "quantity": 12,
+    "price": 499
+  },
+  {
+    "id": 2,
+    "title": "physics",
+    "author": "rd sharma",
+    "category": "Science",
+    "quantity": 20,
+    "price": 399
+  }
+]

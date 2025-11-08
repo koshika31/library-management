@@ -1,0 +1,38 @@
+[
+  {
+    "title": "chemistry",
+    "student_id": "20934",
+    "student_name": "koshika Singh",
+    "issue_date": "10/1/2025, 10:00:00 AM",
+    "due_date": "2025-10-08",
+    "return_date": "11/8/2025, 11:46:47 PM",
+    "fine_paid": 155
+  },
+  {
+    "title": "chemistry",
+    "student_id": "12345",
+    "student_name": "Rahul Sharma",
+    "issue_date": "10/15/2025, 10:00:00 AM",
+    "due_date": "2025-10-22",
+    "return_date": "",
+    "fine_paid": 0
+  },
+  {
+    "title": "chemistry",
+    "student_id": "20934",
+    "student_name": "koshika Singh",
+    "issue_date": "11/8/2025, 11:49:14 PM",
+    "due_date": "2025-11-15",
+    "return_date": "11/8/2025, 11:58:56 PM",
+    "fine_paid": 0
+  },
+  {
+    "title": "physics",
+    "student_id": "20934",
+    "student_name": "koshika singh",
+    "issue_date": "11/8/2025, 11:58:24 PM",
+    "due_date": "2025-11-15",
+    "return_date": "11/8/2025, 11:59:00 PM",
+    "fine_paid": 0
+  }
+]

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-book-open"></i> Library Management System</h1>
+            <nav class="nav-tabs">
+                <button class="tab-btn active" data-tab="manage"><i class="fas fa-book"></i> Manage Books</button>
+                <button class="tab-btn" data-tab="issue"><i class="fas fa-hand-holding-hand"></i> Issue Book</button>
+                <button class="tab-btn" data-tab="return"><i class="fas fa-undo"></i> Return Book</button>
+                <button class="tab-btn" data-tab="fines"><i class="fas fa-dollar-sign"></i> View Fines</button>
+                <button class="tab-btn" data-tab="student-history"><i class="fas fa-history"></i> Student History</button>
+            </nav>
+        </header>
+
+        <main>
+            <section id="manageTab" class="tab-content active">
+                <div class="controls">
+                    <div class="filter-section">
+                        <select id="categoryFilter">
+                            <option value="all">All Categories</option>
+                            <option value="Fiction">Fiction</option>
+                            <option value="Non-Fiction">Non-Fiction</option>
+                            <option value="Science">Science</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Arts">Arts</option>
+                        </select>
+                        <input type="text" id="searchInput" placeholder="Search by title or author...">
+                    </div>
+                    <div class="csv-controls">
+                        <button id="addBookModalBtn" class="btn-primary"><i class="fas fa-plus"></i> Add Book</button>
+                    </div>
+                </div>
+                <div class="books-container" id="booksContainer"></div>
+            </section>
+
+            <section id="issueTab" class="tab-content">
+                <div class="action-form">
+                    <h2><i class="fas fa-hand-holding-hand"></i> Issue Book</h2>
+                    <form id="issueBookForm">
+                        <div class="form-group">
+                            <input type="text" id="studentName" placeholder="Student Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="studentId" placeholder="Student ID" required>
+                        </div>
+                        <div class="form-group">
+                            <select id="issueBookSelect" required>
+                                <option value="">Select Book</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-primary">Issue Book</button>
+                    </form>
+                </div>
+                <div class="issued-books-list">
+                    <h2>Issued Books</h2>
+                    <table id="issuedBooksTable">
+                        <thead>
+                            <tr>
+                                <th>Book Title</th>
+                                <th>Student ID</th>
+                                <th>Student Name</th>
+                                <th>Issue Date</th>
+                                <th>Due Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="returnTab" class="tab-content">
+                <div class="action-form">
+                    <h2><i class="fas fa-undo"></i> Return Book</h2>
+                    <form id="returnBookForm">
+                        <div class="form-group">
+                            <input type="text" id="returnStudentIdSearch" placeholder="Search Student ID..." required>
+                        </div>
+                        <div id="returnBooksTableContainer">
+                            <table id="returnBooksTable">
+                                <thead>
+                                    <tr>
+                                        <th>Book Title</th>
+                                        <th>Issue Date</th>
+                                        <th>Due Date</th>
+                                        <th>Potential Fine</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="fineDisplay" class="fine-display"></div>
+                    </form>
+                </div>
+            </section>
+
+            <section id="finesTab" class="tab-content">
+                <div class="fines-list">
+                    <h2><i class="fas fa-dollar-sign"></i> Outstanding Fines</h2>
+                    <div id="totalFinesDisplay" class="total-fines"></div>
+                    <div id="finesList"></div>
+                </div>
+            </section>
+
+            <section id="student-historyTab" class="tab-content">
+                <div class="action-form">
+                    <h2><i class="fas fa-history"></i> Student History</h2>
+                    <form id="studentHistoryForm">
+                        <div class="form-group">
+                            <input type="text" id="studentHistoryId" placeholder="Enter Student ID" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Show History</button>
+                    </form>
+                </div>
+                <div id="studentHistoryDisplay"></div>
+            </section>
+        </main>
+    </div>
+
+    <div id="addBookModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Add New Book</h2>
+            <form id="addBookForm">
+                <div class="form-group">
+                    <input type="text" id="title" placeholder="Book Title" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="author" placeholder="Author Name" required>
+                </div>
+                <div class="form-group">
+                    <select id="category" required>
+                        <option value="">Select Category</option>
+                        <option value="Fiction">Fiction</option>
+                        <option value="Non-Fiction">Non-Fiction</option>
+                        <option value="Science">Science</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Arts">Arts</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="number" id="quantity" placeholder="Quantity" required min="1">
+                </div>
+                <div class="form-group">
+                    <input type="number" id="price" placeholder="Price (₹)" required min="0">
+                </div>
+                <button type="submit" class="btn-primary">Add Book</button>
+            </form>
+        </div>
+    </div>
+
+    
+
+        <script src="script.js"></script>
+
+    </body>
+
+    </html>
+
+    
